@@ -17,21 +17,56 @@ Built with **Streamlit**, **Hugging Face Transformers**, and **PEFT (LoRA)**, th
 ## 🚀 Setup Instructions
 
 ### 1. Prerequisites
-- Python 3.10 or 3.11 installed.
-- (For Mac) Apple Silicon M1/M2/M3 is fully supported (using MPS fallback for unsupported ops).
-- (For Windows/Linux) NVIDIA GPU recommended but can run on CPU/CUDA.
+- **Python 3.10 or 3.11** installed.
+- **Git** installed.
 
-### 2. Installation
+### 2. OS-Specific Installation Guide
 
-Clone this repository and install the dependencies:
+We highly recommend using a virtual environment to prevent dependency conflicts.
+
+**🍎 macOS (Apple Silicon M1/M2/M3)**
+*Macs use Apple's Metal Performance Shaders (MPS) as a GPU fallback.*
 ```bash
 git clone https://github.com/chetan2469/finetune_lab.git
 cd finetune_lab
+python3 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### 3. Running the Lab
-Start the interactive UI:
+**🪟 Windows (NVIDIA GPU Recommended)**
+*Ensure you have the latest NVIDIA drivers and CUDA Toolkit installed if using a GPU.*
+```powershell
+git clone https://github.com/chetan2469/finetune_lab.git
+cd finetune_lab
+python -m venv venv
+.\venv\Scripts\activate
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+**🐧 Linux (Ubuntu / Debian)**
+*Best performance with an NVIDIA GPU and CUDA.*
+```bash
+git clone https://github.com/chetan2469/finetune_lab.git
+cd finetune_lab
+python3 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+### 3. Model Storage & Caching Details
+When you select and train models (like `Qwen/Qwen2.5-0.5B`), the application automatically downloads the massive model weights from the Hugging Face Hub. 
+- **Where are models saved?** They are automatically stored in your global Hugging Face cache directory:
+  - **Mac/Linux:** `~/.cache/huggingface/hub/`
+  - **Windows:** `C:\Users\<Your-Username>\.cache\huggingface\hub\`
+- **Storage Warning:** LLMs take up a lot of space! You can clear this directory manually if you ever run out of disk space.
+- **Fine-tuned Checkpoints:** Your locally trained LoRA adapters will be saved directly in the project folder under the `results/` directory, which is ignored by Git to save space.
+
+### 4. Running the Lab
+Make sure your virtual environment is activated, then start the interactive UI:
 ```bash
 streamlit run app.py
 ```
