@@ -37,7 +37,8 @@ def main():
         "📝 1. Dataset Prep": "dataset",
         "🧩 2. LoRA Setup": "lora",
         "🚀 3. Training": "training",
-        "💬 4. Evaluation": "evaluation"
+        "💬 4. Evaluation": "evaluation",
+        "🧪 5. Test External Model": "external_test"
     }
     
     selected_page_name = st.sidebar.radio("Go to step:", list(pages.keys()))
@@ -50,6 +51,7 @@ def main():
     - 🧩 Adapter weights
     - 🚀 Model training
     - 💬 Chat interface
+    - 🧪 External models
     """)
     
     # Route to the appropriate page
@@ -71,6 +73,9 @@ def main():
     elif selected_page == "evaluation":
         from ui.evaluation import render_evaluation
         render_evaluation()
+    elif selected_page == "external_test":
+        from ui.external_test import render_external_test
+        render_external_test()
 
 if __name__ == "__main__":
     main()
