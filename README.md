@@ -25,8 +25,8 @@ Built with **Streamlit**, **Hugging Face Transformers**, and **PEFT (LoRA)**, th
 
 Clone this repository and install the dependencies:
 ```bash
-git clone <your-repo-url>
-cd finetune-teaching-lab
+git clone https://github.com/chetan2469/finetune_lab.git
+cd finetune_lab
 pip install -r requirements.txt
 ```
 
